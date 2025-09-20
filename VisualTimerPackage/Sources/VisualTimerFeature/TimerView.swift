@@ -74,19 +74,12 @@ public struct TimerView: View {
                                 .offset(x: hour == 3 ? circleSize/2 - circleSize * 0.11 : (hour == 9 ? -circleSize/2 + circleSize * 0.11 : 0))
                         }
 
-                        // Time display
-                        VStack(spacing: 2) {
-                            Text(timeString())
-                                .font(.system(size: circleSize * 0.16, weight: .light, design: .rounded))
-                                .foregroundColor(.black.opacity(0.85))
-                                .monospacedDigit()
-
-                            if remainingSeconds == 0 && !isRunning && !isDragging {
-                                Text("Drag to set")
-                                    .font(.system(size: circleSize * 0.04, weight: .regular))
-                                    .foregroundColor(.gray)
-                                    .transition(.opacity)
-                            }
+                        // Drag to set instruction only
+                        if remainingSeconds == 0 && !isRunning && !isDragging {
+                            Text("Drag to set")
+                                .font(.system(size: circleSize * 0.04, weight: .regular))
+                                .foregroundColor(.gray)
+                                .transition(.opacity)
                         }
                     }
                     .contentShape(Circle())
